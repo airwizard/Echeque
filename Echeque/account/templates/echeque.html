@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block my_extrajs %}
+
+<script type="text/javascript" src="{% static 'js/echeque.js' %}"></script>
+<script>
+
+
+</script>
+
+{% endblock %}
+
+{% block my_content %}
+<center style="margin: 100px 10px 0px">
+    <h3  style="">E-Cheque List</h3>
+    <div></div>
+    <div id="echeque_list" style="width: 900px;" name="echeque_list">
+        <table class="ui celled striped table">
+            <thead>
+                <tr>
+                    <!--<th>From</th>-->
+                    <!--<th>To</th>-->
+                    <th>Transaction Hash</th>
+                    <th>Block Number</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody name="trans_tbody" id="trans_tbody">
+
+            </tbody>
+        </table>
+
+    </div>
+</center>
+
+{% endblock %}

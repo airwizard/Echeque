@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+    <head></head>
+
+    <body>
+        {% load static %}
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <title>Echeque System</title>
+
+        <script type="text/javascript" src="{% static 'plugins/jQuery/jquery.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'plugins/jQuery/jquery.form.js' %}"></script>
+        <script type="text/javascript" src="{% static 'plugins/jQuery/jquery.validate-min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'plugins/semantic/semantic.js' %}"></script>
+        <script type="text/javascript" src="{% static 'plugins/sha256/sha256-encrypt-hash.js' %}"></script>
+
+
+        <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
+        <link type="text/css" href="{% static 'plugins/semantic/semantic.css' %}" rel="stylesheet" />
+
+        <script>
+
+        </script>
+
+
+        {% block my_extrajs %}{% endblock %}
+
+        <div id="application">
+            <!-- Following Menu -->
+            <div>
+                <div class="teal column ui large top fixed inverted menu  aligned centered " style="">
+                    <div class=" ">
+                        <div class="item" id="menu_list">
+                            <i name="menu_list" class="content icon" style="color:white"></i></div>
+                    </div>
+                    <div style="margin:auto auto;color:white" id="welcome_region">Welcome</div></div>
+            </div>
+            <div style="margin-top:50px">
+
+                {% block my_content %} {% endblock %}
+
+                <div id="myAlert" name="myAlert" style="width:50%; margin:0 auto!important; " > </div>
+            </div>
+            <div class="thin ui left vertical inverted labeled icon  sidebar  menu ">
+                <a class="item" name="Balance_item" href="/transaction/balance/">
+                    <i class="home icon"></i>Account</a>
+
+                <a class="item" name="Deposit_item" href="/transaction/deposit/">
+                    <i class="credit card alternative icon"></i>Deposit</a>
+
+                <a class="item" name="IssueEcheque_item" href="/transaction/issue_echeque/">
+                    <i class="write icon"></i> Issue E-cheque</a>
+
+
+                <a class="item" name="TransferEcheque_item" href="/transaction/transfer_echeque/">
+                    <i class="retweet icon"></i> Transfer E-cheque</a>
+
+                <!--<a class="item" name="Send_item"> <i class="Credit Card Alternative icon"></i> Send E-Cheque </a>-->
+                <a class="item" name="CashECheque_item" href="/transaction/cash_echeque/">
+                    <i class="university icon"></i>Cash E-cheque</a>
+
+
+
+<!--<i class="credit card alternative icon"  University      Retweet   >-->
+
+
+                <!--<a class="item" name="E-Cheques_item" href="/transaction/echeque_list/">-->
+                    <!--<i class="list layout icon"></i>E-Cheque List</a>-->
+                <a class="item" name="Address_item" href="/address_book/">
+                    <i class="list icon"></i>Address Book</a>
+                <a class="item" name="Setting_item" href="/setting/">
+                    <i class="setting icon"></i>Setting</a>
+                <a class="item" name="Logout_item" href="/logout/">
+                    <i class="log out icon"></i>Logout</a>
+            </div>
+
+        </div>
+    </body>
+
+</html>

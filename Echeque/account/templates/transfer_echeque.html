@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+{% block my_extrajs %}
+
+<script src = "{% static 'js/transfer_echeque.js' %}" ></script>
+<script>
+    var message = "{{ message }}";
+    if (message != "success") {
+        addWarning(message);
+    }
+</script>
+
+
+
+{% endblock %}
+
+{% block my_content %}
+<center style="margin: 100px 10px 0px">
+    <h3>Send E-cheque</h3>
+    <form class="ui form" style="width:50%">{% csrf_token %}
+        <div class="ui stacked segment">
+
+            <div class="field" style="text-align: -webkit-left;">
+                <label>Echeque Number</label>
+                <!--<label>Dropdown</label>-->
+                <select class="ui dropdown" name="echeque_no"  id="echeque_no">
+                    {% for e in echeque_list %}
+                        <option value="{{ e }}">{{ e }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="field" style="text-align: -webkit-left;">
+                <label>Echeque Amount</label>
+                <input id="amount" value="{{ amount }}" readonly="" type="text">
+            </div>
+
+
+            <div class="field" style="text-align: -webkit-left;">
+                <label>To</label>
+                <!--<label>Dropdown</label>-->
+                <select class="ui dropdown" name="to_addr"  id="to_addr">
+                    {% for to_obj in to_addr %}
+                        <option value="{{ to_obj.addr }}">{{ to_obj.email }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div>
+                <input type="button" value="Transfer" class="ui fluid large teal submit button" id="transfer_btn">
+            </div>
+        </div>
+        <div class="ui error message"></div>
+    </form>
+</center>
+{% endblock %}

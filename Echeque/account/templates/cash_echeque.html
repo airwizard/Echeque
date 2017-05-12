@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+{% block my_extrajs %}
+
+<script src = "{% static 'js/cash_echeque.js' %}" ></script>
+<script>
+    var success_flag = {{ success_flag }};
+    if (JSON.stringify(success_flag) == 'false') {
+        addWarning('Address loading fails.');
+    }
+</script>
+
+
+
+{% endblock %}
+
+{% block my_content %}
+<center style="margin: 100px 10px 0px">
+    <h3>Cash E-cheque</h3>
+    <form class="ui form" style="width:50%">{% csrf_token %}
+        <div class="ui stacked segment">
+            <!--<div class="ui fluid selection dropdown">-->
+                <!--<input type="hidden" name="accounts">-->
+                <!--<div class="default text">Bill Account No.</div>-->
+                <!--<i class="dropdown icon"></i>-->
+                <!--<div class="menu">-->
+                    <!--<div class="item" data-value="0">0x6fad107f1fcfa3b5eefe5b447bac6b8b18453a6b</div>-->
+                    <!--<div class="item" data-value="1">0xb523055923ff22c6926faffd74562e08a6f6bb3f</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="field" style="text-align: -webkit-left;">
+                <label>Echeque Number</label>
+                <!--<label>Dropdown</label>-->
+                <select class="ui dropdown" name="echeque_no"  id="echeque_no">
+                    {% for e in echeque_list %}
+                        <option value="{{ e }}">{{ e }}</option>
+                    {% endfor %}
+                    <!--<option value="">Bill Account No.</option>-->
+                    <!--<option value="0">0x6fad107f1fcfa3b5eefe5b447bac6b8b18453a6b</option>-->
+                    <!--<option value="1">0xb523055923ff22c6926faffd74562e08a6f6bb3f</option>-->
+                </select>
+            </div>
+
+            <div class="field" style="text-align: -webkit-left;">
+                <label>Echeque Amount</label>
+                <input id="amount" value="{{ amount }}" readonly="" type="text">
+            </div>
+
+            <!--<div class="ui fluid large teal submit button">Login</div > -->
+            <div>
+                <input type="button" value="Issue E-cheque" class="ui fluid large teal submit button" id="cash_btn">
+            </div>
+        </div>
+        <div class="ui error message"></div>
+    </form>
+</center>
+{% endblock %}

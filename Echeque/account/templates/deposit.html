@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+{% block my_extrajs %}
+
+<script src = "{% static 'js/deposit.js' %}" ></script>
+<script>
+
+</script>
+
+
+
+{% endblock %}
+
+{% block my_content %}
+<center style="margin: 100px 10px 0px">
+    <h3>Deposit</h3>
+    <form class="ui form" style="width:50%">{% csrf_token %}
+        <div class="ui stacked segment">
+            <!--<div class="ui fluid selection dropdown">-->
+                <!--<input type="hidden" name="accounts">-->
+                <!--<div class="default text">Bill Account No.</div>-->
+                <!--<i class="dropdown icon"></i>-->
+                <!--<div class="menu">-->
+                    <!--<div class="item" data-value="0">0x6fad107f1fcfa3b5eefe5b447bac6b8b18453a6b</div>-->
+                    <!--<div class="item" data-value="1">0xb523055923ff22c6926faffd74562e08a6f6bb3f</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <div class="field" style="text-align: -webkit-left;">
+                <label>Bank Name</label>
+            <!--div class="field"-->
+                <!--<label>Dropdown</label>-->
+                <select class="ui dropdown" name="bankName"  id="bankName">
+                    <option value="HSBC">HSBC</option>
+                </select>
+            </div>
+            <div class="field" style="text-align: -webkit-left;">
+                <label>Amount</label>
+            <!--div class="field"-->
+                <div class="ui left icon input">
+                    <i class="dollar icon"></i>
+                    <input type="text" name="amount" id="amount" placeholder="Deposit Amount">
+                </div>
+            </div>
+
+            <!--<div class="ui fluid large teal submit button">Login</div > -->
+            <div>
+                <input type="button" value="Deposit" class="ui fluid large teal submit button" id="deposit">
+            </div>
+        </div>
+        <div class="ui error message"></div>
+    </form>
+</center>
+{% endblock %}

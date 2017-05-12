@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% load static %}
+{% block my_extrajs %}
+
+<script src = "{% static 'js/balance.js' %}" ></script>
+<script>
+    var message = "{{ message }}";
+    if (message != "success") {
+        addWarning(message);
+    }
+
+</script>
+
+
+
+{% endblock %}
+
+{% block my_content %}
+<center style="margin: 70px 10px 0px">
+
+      <h3  style="s ">Account Balance</h3>
+
+
+      <div></div>
+      <div id="coinbase" style="" name="coinbase">
+          <table class="ui celled table" style="width: 50%;">
+              <tbody>
+                  <tr>
+                      <td>
+                          <div class="ui ribbon label">Address</div>
+                      </td>
+                      <td>
+                          {{ from_addr }}
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>
+                          <div class="ui ribbon label">Balance</div>
+                      </td>
+                      <td>
+                          {{ balance }}
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+
+
+
+
+      </div>
+
+    <div id="echeque_list" style="margin: 20px 0px 0px 0px; width: 50%;" name="echeque_list">
+
+        <h3  style="s ">E-cheque List</h3>
+
+        <table class="ui celled striped table">
+            <thead>
+                <tr>
+                    <!--<th>From</th>-->
+                    <!--<th>To</th>-->
+                    <th>E-cheque Number</th>
+                    <th>Amount</th>
+                    <th>Drawer</th>
+                    <th>Payee</th>
+                </tr>
+
+            </thead>
+            <tbody name="echeque_tbody" id="echeque_tbody">
+                {% for echeque in echeque_list %}
+                    <tr>
+
+                        <td>
+                            <a href='/transaction/echeque?echeque_no={{echeque.echeque_no}}'>
+                                {{ echeque.echeque_no }}
+                            </a>
+                        </td>
+                        <td> {{ echeque.amount }}</td>
+                        <td> {{ echeque.drawer }}</td>
+                        <td> {{ echeque.payee }}</td>
+
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+    <button type="button"class="ui fluid large teal submit button" style="width: 50%;margin: 20px!important;" id="unlockAccount" name="unlockAccount" >Unlock Account</button>
+
+
+    <div class="ui modal">
+        <div class="header">Unlock Account</div>
+
+        <div class="content">
+            <div class="ui teal message">Please input the payment password.</div>
+            <div class="ui input focus" style="width:100%!important;">
+                <input type="text"  name="password" id="password" placeholder="Payment Password">
+            </div>
+        </div>
+
+
+        <div class="actions">
+            <div class="ui black deny button">
+                Nope
+            </div>
+            <div class="ui positive right labeled icon button " name="unlock_btn" id="unlock_btn">
+                Unlock
+                <i class="checkmark icon"></i>
+            </div>
+        </div>
+    </div>
+
+
+
+</center>
+{% endblock %}

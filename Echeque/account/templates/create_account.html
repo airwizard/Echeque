@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+{% block my_extrajs %}
+
+<script src = "{% static 'js/create_account.js' %}" ></script>
+<script>
+
+</script>
+
+
+
+{% endblock %}
+
+{% block my_content %}
+<center style="margin: 100px 10px 0px">
+
+    <h3  style="s ">Create Account</h3>
+
+    <button type="button" class="ui fluid large teal submit button" style="width: 50%;margin: 10px!important;" id="createAccount" name="createAccount" >Create Account</button>
+
+    <div class="ui modal">
+        <div class="header">Create Account</div>
+
+        <div class="content">
+            <!--<form class="ui form">-->
+                <!--<div class="field">-->
+                    <!--<input type="textarea" class="ui form field" name="email" id="email" placeholder="Email">-->
+                <!--</div>-->
+
+            <!--</form>-->
+            <div class="ui teal message">The password would not be stored and can not be reset.
+            <br/>      Please remember the payment password of your account, otherwise you are not able to do any transactions.</div>
+            <div class="ui input focus" style="width:100%!important;">
+                <input type="text"  name="password" id="password" placeholder="Payment Password">
+            </div>
+        </div>
+
+
+        <div class="actions">
+            <div class="ui black deny button">
+                Nope
+            </div>
+            <div class="ui positive right labeled icon button " name="create_account_btn" id="create_account_btn">
+                Create
+                <i class="checkmark icon"></i>
+            </div>
+        </div>
+    </div>
+
+
+
+</center>
+{% endblock %}

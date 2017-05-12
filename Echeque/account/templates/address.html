@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+{% block my_extrajs %}
+
+<script src = "{% static 'js/address.js' %}" ></script>
+<script>
+
+</script>
+
+
+
+{% endblock %}
+
+{% block my_content %}
+<center style="margin: 100px 10px 0px">
+
+    <h3  style="">Address Book</h3>
+    <div></div>
+    <div id="addr_list" style="width: 50%;" name="addr_list">
+        <table class="ui celled table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>E-mail</th>
+                    <th>Address</th>
+                </tr>
+            </thead>
+            <tbody name="addr_tbody" id="addr_tbody">
+
+            </tbody>
+        </table>
+
+    </div>
+    <button type="button" class="ui fluid large teal submit button" style="width: 50%;margin: 10px!important;" id="addAddress" name="addAddress" >Add Address</button>
+
+    <div class="ui modal">
+        <div class="header">Add Address</div>
+
+        <div class="content">
+            <!--<form class="ui form">-->
+                <!--<div class="field">-->
+                    <!--<input type="textarea" class="ui form field" name="email" id="email" placeholder="Email">-->
+                <!--</div>-->
+
+            <!--</form>-->
+
+            <div class="ui input focus" style="width:100%!important;">
+                <input type="text"  name="email" id="email" placeholder="Email">
+            </div>
+        </div>
+
+
+        <div class="actions">
+            <div class="ui black deny button">
+                Nope
+            </div>
+            <div class="ui positive right labeled icon button" name="add_address_btn" id="add_address_btn">
+                Add
+                <i class="checkmark icon"></i>
+            </div>
+        </div>
+    </div>
+
+
+
+</center>
+{% endblock %}

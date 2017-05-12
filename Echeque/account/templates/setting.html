@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block my_extrajs %}
+
+<script type="text/javascript" src="{% static 'js/setting.js' %}"></script>
+<script>
+
+
+</script>
+
+{% endblock %}
+
+{% block my_content %}
+<center style="margin: 100px 10px 0px">
+    <h3>Change Password</h3>
+    <form class="ui form" style="width:50%">{% csrf_token %}
+        <div class="ui stacked segment">
+            <div class="field">
+                <div class="ui left icon input">
+                    <i class="lock icon"></i>
+                    <input type="password" name="old_pwd" id="old_pwd" placeholder="Old password">
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui left icon input">
+                    <i class="lock icon"></i>
+                    <input type="password" name="new_pwd" id="new_pwd" placeholder="New password">
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui left icon input">
+                    <i class="lock icon"></i>
+                    <input type="password" name="repeat_pwd" id="repeat_pwd" placeholder="Repeat new password">
+                </div>
+            </div>
+            <!--<div class="ui fluid large teal submit button">Login</div > -->
+            <div>
+                <input type="button" value="Submit" class="ui fluid large teal submit button" id="change-password">
+            </div>
+        </div>
+        <div class="ui error message"></div>
+    </form>
+</center>
+
+{% endblock %}

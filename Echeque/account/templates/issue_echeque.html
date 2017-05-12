@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+{% block my_extrajs %}
+
+<script src = "{% static 'js/issue_echeque.js' %}" ></script>
+<script>
+    var message = "{{ message }}";
+    if (message != "success") {
+        addWarning(message);
+    }
+
+</script>
+
+
+
+{% endblock %}
+
+{% block my_content %}
+<center style="margin: 100px 10px 0px">
+
+    <h3>Sign an E-cheque</h3>
+    <form class="ui form" style="width:50%">{% csrf_token %}
+        <div class="ui stacked segment">
+            <!--<div class="ui fluid selection dropdown">-->
+                <!--<input type="hidden" name="accounts">-->
+                <!--<div class="default text">Bill Account No.</div>-->
+                <!--<i class="dropdown icon"></i>-->
+                <!--<div class="menu">-->
+                    <!--<div class="item" data-value="0">0x6fad107f1fcfa3b5eefe5b447bac6b8b18453a6b</div>-->
+                    <!--<div class="item" data-value="1">0xb523055923ff22c6926faffd74562e08a6f6bb3f</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="field" style="text-align: -webkit-left;">
+                <label>Drawer Account</label>
+                <input id="from_addr" value="{{ from_addr }}" readonly="" type="text">
+            </div>
+
+            <div class="field" style="text-align: -webkit-left;">
+                <label>E-cheque Amount</label>
+                <div class="ui left icon input" >
+                    <i class="dollar icon"></i>
+                    <input type="text" name="amount" id="amount" placeholder="1.00">
+                </div>
+            </div>
+
+            <div class="field" style="text-align: -webkit-left;">
+                <label>Payee</label>
+                <input type="text" name="payee_name" id="payee_name" list="payee_list" placeholder="Can be empty">
+                <datalist id="payee_list">
+                    {% for to in to_list %}
+                        <option value="{{ to.name }}">{{ to.email }}</option>
+                    {% endfor %}
+                </datalist>
+            </div>
+
+<!--<input list="cookies" placeholder="Type of Cookie"/>-->
+
+<!--<datalist id="cookies">-->
+<!--<option value="Chocolate Chip"/>-->
+<!--<option value="Peanut Butter"/>-->
+<!--<option value="Raisin Oatmeal"/>-->
+<!--</datalist>-->
+
+            <!--<div class="ui fluid large teal submit button">Login</div > -->
+            <div>
+                <input type="button" value="Issue" class="ui fluid large teal submit button" id="issue_btn">
+            </div>
+        </div>
+        <div class="ui error message"></div>
+    </form>
+
+
+
+
+</center>
+{% endblock %}
